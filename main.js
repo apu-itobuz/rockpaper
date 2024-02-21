@@ -4,6 +4,7 @@ const scissors = document.getElementById("scissors");
 const weapon = document.getElementById("weapon");
 const play = document.getElementById("play");
 
+
 let playerScore = document.getElementById("playerScore");
 let computerScore = document.getElementById("computerScore");
 let pScore = 0;
@@ -14,27 +15,26 @@ function playAgain() {
   cScore = 0;
   playerScore.innerText = "player score : " + 0;
   computerScore.innerText = "computer score : " + 0;
+  weapon.innerHTML = "Choose Your Weapon!";
 }
 
 function isGameOver() {
   return pScore >= 3 || cScore >= 3;
 }
-//----------
 
 function computerPlay() {
-  const computerOptions = ["rock", "paper", "scissors"];
-  const choiceNumber = Math.floor(Math.random() * computerOptions.length);
-
+const computerOptions = ["rock", "paper", "scissors"];
+const choiceNumber = Math.floor(Math.random() * computerOptions.length);
   return computerOptions[choiceNumber];
 }
-//-------------
+
 rock.addEventListener("click", () => {
   if (isGameOver()) return;
   let computerChoice = computerPlay();
   let playerChoice = "rock";
   if (playerChoice === computerChoice) {
+    console.log("Tie");
   } else if (computerChoice == "paper") {
-    console.log("Computer Won");
     cScore++;
     computerScore.innerHTML = "computer score: " + cScore;
   } else {
@@ -47,21 +47,17 @@ rock.addEventListener("click", () => {
     weapon.innerHTML = "game over";
   }
 });
-//------------------
+
 paper.addEventListener("click", () => {
   if (isGameOver()) return;
   let computerChoice = computerPlay();
   let playerChoice = "paper";
-  if (playerChoice === computerChoice) {
+  if (playerChoice === computerChoice)  {
     console.log("Tie");
-    console.log("Computer" + cScore);
-    console.log("Player" + pScore);
   } else if (computerChoice == "rock") {
-    console.log("Player Won");
     pScore++;
     playerScore.innerHTML = "player score: " + pScore;
   } else {
-    console.log("Computer Won");
     cScore++;
     computerScore.innerHTML = "computer score: " + cScore;
   }
@@ -69,21 +65,17 @@ paper.addEventListener("click", () => {
     weapon.innerHTML = "game over";
   }
 });
-//-----------------
+
 scissors.addEventListener("click", () => {
   if (isGameOver()) return;
   let computerChoice = computerPlay();
   let playerChoice = "scissors";
   if (playerChoice === computerChoice) {
     console.log("Tie");
-    console.log("Computer" + cScore);
-    console.log("Player" + pScore);
   } else if (computerChoice == "rock") {
-    console.log("Player Won");
     pScore++;
     playerScore.innerHTML = "player score: " + pScore;
   } else {
-    console.log("Computer Won");
     cScore++;
     computerScore.innerHTML = "computer score: " + cScore;
   }
@@ -91,7 +83,7 @@ scissors.addEventListener("click", () => {
     weapon.innerHTML = "game over";
   }
 });
-//-----------------
+
 play.addEventListener("click", () => {
   playAgain();
 });
