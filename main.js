@@ -9,6 +9,13 @@ let computerScore = document.getElementById("computerScore");
 let pScore = 0;
 let cScore = 0;
 
+function playAgain() {
+  pScore = 0;
+  cScore = 0;
+  playerScore.innerText = "player score : " + 0;
+  computerScore.innerText = "computer score : " + 0;
+}
+
 function isGameOver() {
   return pScore >= 3 || cScore >= 3;
 }
@@ -29,11 +36,11 @@ rock.addEventListener("click", () => {
   } else if (computerChoice == "paper") {
     console.log("Computer Won");
     cScore++;
-    computerScore.innerHTML = "computer score = " + cScore;
+    computerScore.innerHTML = "computer score: " + cScore;
   } else {
     console.log("Player Won");
     pScore++;
-    playerScore.innerHTML = "player score = " + pScore;
+    playerScore.innerHTML = "player score: " + pScore;
   }
 
   if (pScore >= 3 || cScore >= 3) {
@@ -52,11 +59,11 @@ paper.addEventListener("click", () => {
   } else if (computerChoice == "rock") {
     console.log("Player Won");
     pScore++;
-    playerScore.innerHTML = "player score = " + pScore;
+    playerScore.innerHTML = "player score: " + pScore;
   } else {
     console.log("Computer Won");
     cScore++;
-    computerScore.innerHTML = "computer score = " + cScore;
+    computerScore.innerHTML = "computer score: " + cScore;
   }
   if (pScore >= 3 || cScore >= 3) {
     weapon.innerHTML = "game over";
@@ -74,13 +81,17 @@ scissors.addEventListener("click", () => {
   } else if (computerChoice == "rock") {
     console.log("Player Won");
     pScore++;
-    playerScore.innerHTML = "player score = " + pScore;
+    playerScore.innerHTML = "player score: " + pScore;
   } else {
     console.log("Computer Won");
     cScore++;
-    computerScore.innerHTML = "computer score = " + cScore;
+    computerScore.innerHTML = "computer score: " + cScore;
   }
   if (pScore >= 3 || cScore >= 3) {
     weapon.innerHTML = "game over";
   }
+});
+//-----------------
+play.addEventListener("click", () => {
+  playAgain();
 });
